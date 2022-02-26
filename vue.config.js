@@ -1,5 +1,6 @@
 module.exports = {
   devServer: {
+    // beforer: require("./src/mock/index.js"),
     port: 8888,
     open: true,
     https: false,

@@ -2,7 +2,7 @@
   <div id="login-container">
     <el-form
       :rules="rules"
-      ref="form"
+      ref="formName"
       :model="form"
       label-width="60px"
       class="login-form"
@@ -15,7 +15,7 @@
         <el-input v-model="form.password" placeholder="请输入密码"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">登录</el-button>
+        <el-button type="primary" @click="submitForm">登录</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -45,8 +45,8 @@ export default {
     };
   },
   methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+    submitForm() {
+      this.$refs.formName.validate((valid) => {
         if (valid) {
           //alert("submit!");
           login(this.form.username, this.form.password).then((response) => {

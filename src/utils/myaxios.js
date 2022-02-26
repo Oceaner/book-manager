@@ -8,7 +8,7 @@ import axios from "axios";
 // })
 
 const myaxios = axios.create({
-  baseURL: "/",
+  baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000,
 });
 
