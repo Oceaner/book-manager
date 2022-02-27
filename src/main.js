@@ -5,6 +5,7 @@ import "element-ui/lib/theme-chalk/index.css";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
+import "./permission";
 require("./mock");
 
 Vue.use(ElementUI);

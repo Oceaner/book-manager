@@ -62,7 +62,8 @@ export default {
                     JSON.stringify(respUser.data)
                   );
                   localStorage.setItem("yuanhr-manager-token", resp.data.token);
-                  this.$router.push("./");
+                  // this.$router.push("./");
+                  this.$router.push("/home");
                 } else {
                   this.$message({
                     message: respUser.message,

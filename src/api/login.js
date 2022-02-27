@@ -17,3 +17,15 @@ export function getUserInfo(token) {
     method: `get`,
   });
 }
+
+export function logout(token) {
+  return myaxios({
+    url: "/user/logout/" + token,
+    method: "post",
+    data() {
+      return {
+        token,
+      };
+    },
+  });
+}
