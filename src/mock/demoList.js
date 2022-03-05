@@ -30,7 +30,31 @@ let bookinfolist = Mock.mock({
         "电子工业出版社",
         "牛津大学出版社",
       ],
-      publicationdate: '@date("yyyy/MM/dd)',
+      publicationdate: "@date(yyyy/MM/dd)",
+      price: "@float(10,99,0,1)",
+      "quantity|50-1000": 1,
+      "bookType|1": ["1", "2", "3", "4"],
+    },
+  ],
+});
+
+const searchResult = Mock.mock({
+  total: "@integer(60,220)",
+  "booklists|10": [
+    {
+      "id|+1": 1, //id从1开始连续编号
+      bookISBN: /[0-9]{13}/, //13位数的ISBN号
+      bookName: "@ctitle(4, 12)", //书名为4~12个汉字
+      author: "@cname", //中文作者姓名
+      "press|1": [
+        "清华大学出版社",
+        "北京大学出版社",
+        "北京理工大学出版社",
+        "人民邮电出版社",
+        "电子工业出版社",
+        "牛津大学出版社",
+      ],
+      publicationdate: "@date(yyyy/MM/dd)",
       price: "@float(10,99,0,1)",
       "quantity|50-1000": 1,
       "bookType|1": ["1", "2", "3", "4"],
@@ -66,6 +90,14 @@ export default {
       message: "查询成功",
       flag: true,
       data: bookinfolist,
+    };
+  },
+  "post|/bookinfo/list/search": () => {
+    return {
+      status: 200,
+      flag: true,
+      message: "查询成功",
+      data: searchResult,
     };
   },
 };
