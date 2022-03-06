@@ -52,7 +52,12 @@
       ></el-form-item>
     </el-form>
     <!-- data为要绑定的数据，border为显示表格边框（本列不加），max-height为表格最大高度，由于数据多，大于此高度会自动显示滚动条 -->
-    <el-table :data="bookinfolist" style="width: 100%" max-height="680">
+    <el-table
+      :data="bookinfolist"
+      :key="itemKey"
+      style="width: 100%"
+      max-height="680"
+    >
       <!-- fixed为固定此列；prop为字段名；label为表头名；type设置为index就会自动添加索引（即序号），从1开始 -->
       <el-table-column
         label="序号"
@@ -137,6 +142,7 @@ export default {
     return {
       bookinfolist: [],
       total: 0,
+      itemKey: "",
       currentPage: 1,
       pageSize: 10,
       searchWhere: {
@@ -191,6 +197,8 @@ export default {
           const resp = response.data;
           this.bookinfolist = resp.data.booklists;
           this.total = resp.data.total;
+          this.itemKey = Math.random();
+          console.log(this.itemKey);
           console.log(resp);
         });
     },
